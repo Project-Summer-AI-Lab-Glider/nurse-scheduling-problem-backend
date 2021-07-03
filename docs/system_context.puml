@@ -1,0 +1,22 @@
+@startuml
+!include <C4/C4_Container>
+
+Person(admin, "Admin", "A person responsible for foundation management.")
+Person(nurse, "Nurse", "A nurse employed in the foundation.")
+Person(mainNurse, "Main nurse", "A nurse responsible for nurse management.")
+
+System(nspSystem, "Nurse Scheduling System" )
+
+System_Ext(sentry, "Sentry", "Application Monitoring and Error Tracking Software")
+System_Ext(netlify, "Netlify", "Deployment platform")
+System_Ext(emailJs, "Email JS", "Email provider")
+
+Rel(admin, nspSystem, "uses")
+Rel(nurse, nspSystem, "uses")
+Rel(mainNurse, nspSystem, "uses")
+
+Rel_D(nspSystem, sentry, "sends error logs")
+Rel_R(nspSystem, netlify, "is deployed on")
+Rel_L(nspSystem, emailJs, "sends email")
+
+@enduml
